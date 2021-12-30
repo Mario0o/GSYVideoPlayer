@@ -154,6 +154,7 @@ public class ListNormalAdapter extends BaseAdapter {
         holder.gsyVideoPlayer.setPlayTag(TAG);
         //holder.gsyVideoPlayer.c(true);
         holder.gsyVideoPlayer.setReleaseWhenLossAudio(false);
+        holder.gsyVideoPlayer.setRotateWithSystem(false);
         holder.gsyVideoPlayer.setAutoFullWithSize(true);
         holder.gsyVideoPlayer.setShowFullAnimation(!getListNeedAutoLand());
         holder.gsyVideoPlayer.setIsTouchWiget(false);
@@ -272,11 +273,15 @@ public class ListNormalAdapter extends BaseAdapter {
     private void resolveFull() {
         if (getListNeedAutoLand() && orientationUtils != null) {
             //直接横屏
+            // ------- ！！！如果不需要旋转屏幕，可以不调用！！！-------
+            // 不需要屏幕旋转，还需要设置 setNeedOrientationUtils(false)
             orientationUtils.resolveByClick();
         }
     }
 
     private void onQuitFullscreen() {
+        // ------- ！！！如果不需要旋转屏幕，可以不调用！！！-------
+        // 不需要屏幕旋转，还需要设置 setNeedOrientationUtils(false)
         if (orientationUtils != null) {
             orientationUtils.backToProtVideo();
         }
@@ -315,6 +320,8 @@ public class ListNormalAdapter extends BaseAdapter {
 
 
     public void onBackPressed() {
+        // ------- ！！！如果不需要旋转屏幕，可以不调用！！！-------
+        // 不需要屏幕旋转，还需要设置 setNeedOrientationUtils(false)
         if (orientationUtils != null) {
             orientationUtils.backToProtVideo();
         }
